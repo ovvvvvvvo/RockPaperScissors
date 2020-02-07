@@ -1,0 +1,61 @@
+
+        .container{
+            width: 650px;
+            margin: 0    auto;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .player{
+            width: 150px;
+            height: 150px;
+            margin: 100px 50px;
+            display: inline-block; 
+        }
+
+        .player p{
+            font-weight: 700;
+            }
+
+            .player div {
+                width: 100%;
+                height: 100%;
+
+            }
+
+            .Rock {
+                background-image: url('rock.png');
+            }
+
+            .paper {
+                background-image: url('paper.png');
+            }
+
+            .Scissors{
+                background-image: url('scissors.png');
+            }
+
+            .Rock, .paper .Scissors{
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+
+        
+
+
+
+
+
+   var user = document.querySelector('.userchoice'),
+            computer = document.querySelector('.computerchoice'),
+            startBtn = document.querySelector('.startBtn'),
+            result = document.querySelector('.result'),
+            userchoice,
+            winState = ['Rock', 'Paper', 'Scissors'];
+
+        startBtn.addEventListener('.click', function(){
+            this.disabled = true;
+            result.innerHTML = '';
+            user.className = "userchoice Rock count-in";
+            computer.className = "computerchoice Rock count-in"
+        });

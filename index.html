@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock Paper Scissors</title>
+    <style>
+    @keyframes count-in{
+        0%{
+            transform: translateY(0)
+        }
+        60%{
+            transform: translateY(-100px)
+        }
+        100%{
+            transform: translateY(0)
+        }
+    }
+
+    .count-in{
+        animation: .7s count-in 3;
+    }
+        .container{
+            width: 650px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .player{
+            width: 150px;
+            height: 150px;
+            margin: 100px 50px;
+            display: inline-block;
+        }   
+
+        .player p{
+            font-weight: 700;
+        }
+
+        .player div{
+            width: 100%;
+            height: 100%;
+        }
+
+        .Rock{
+            background-image: url('rock.png');
+        }
+
+        .Paper{
+            background-image: url('paper.png');
+        }
+
+        .Scissors{
+            background-image: url('scissors.png');
+        }
+
+        .Rock, .Paper, .Scissors{
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .startBtn{
+            border: none;
+            padding: 10px 100px;
+        }
+
+        .foo {
+            background: pink;
+        }
+
+        .foo2 {
+            border: 10px solid salmon;
+        }
+    </style>
+</head>
+<body>
+    <div class="container foo foo2">
+
+        <h1>Rock, Paper, Scissors</h1>
+
+        <div class="player">
+            <div class="userchoice Rock"></div>
+            <p>Hanna</p>
+        </div>
+
+        <div class="player">
+            <div class="computerchoice Rock"></div>
+            <p>Jin-young</p>
+        </div>
+
+        <div class="result"></div>
+
+        <button class="startBtn">Play</button>
+
+    </div>
+
+    <script>
+    
+        var user = document.querySelector('.userchoice'),
+            computer = document.querySelector('.computerchoice'),
+            startBtn = document.querySelector('.startBtn'),
+            result = document.querySelector('.result'),
+            userchoice,
+            winStates = ['Rock', 'Paper', 'Scissors'];
+    
+        startBtn.addEventListener('click', function(){
+            this.disabled = true;  
+            result.innerHTML = '';
+            user.className = "userchoice Rock count-in";
+            computer.className = "computerchoice Rock count-in";
+        });
+
+        document.addEventListener('animationend', function(){
+            startBtn.disabled = false;
+            var computerchoice = winStates[Math.floor(Math.random() * 3)];
+            var userchoice = winStates[Math.floor(Math.random() * 3)];
+            user.className = "userchoice " + userchoice;
+           computer.className = "computerchoice " + computerchoice;
+        })
+    </script>
+</body>
+
+</html>
